@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'react-emotion';
 import { Grid, Navigation } from '@8base/boost';
 
-const NavTag = styled(Navigation)(props => ({
+const NavTag = styled(Navigation)(props => console.log(props) || ({
   position: 'fixed',
   left: 0,
-  zIndex: props.theme.Z_INDEX.FIXED_NAV,
+  zIndex: 1000,
 }));
 
 const NavPlate = ({ children, ...rest }) => (
