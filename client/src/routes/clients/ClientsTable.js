@@ -7,8 +7,24 @@ import { TableBuilder, Dropdown, Icon, Menu, Link, Tag, Row, withModal } from '@
 import { FIELD_TYPE, SMART_FORMATS, FILE_FORMATS, DATE_FORMATS, SWITCH_FORMATS, SWITCH_VALUES } from '@8base/utils';
 
 const CLIENTS_LIST_QUERY = gql`
-query ClientsTableContent($filter: ClientFilter, $orderBy: [ClientOrderBy], $after: String, $before: String, $first: Int, $last: Int, $skip: Int) {
-  clientsList(filter: $filter, orderBy: $orderBy, after: $after, before: $before, first: $first, last: $last, skip: $skip) {
+query ClientsTableContent(
+  $filter: ClientFilter
+  $orderBy: [ClientOrderBy]
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+  $skip: Int
+) {
+  clientsList(
+    filter: $filter
+    orderBy: $orderBy
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+    skip: $skip
+  ) {
     items {
       id
       firstName
@@ -21,6 +37,7 @@ query ClientsTableContent($filter: ClientFilter, $orderBy: [ClientOrderBy], $aft
     count
   }
 }
+
 `;
 
 const TABLE_COLUMNS = [
@@ -161,9 +178,20 @@ const ClientsTable = enhancer(
       }
     };
 
+    renderName = (column, rowData) => {
+      const dataPath = column.name.split('.');
+      const linkId = objectPath.get(rowData, 'id') || '';
+      const cellData = objectPath.get(rowData, dataPath) || '';
+      return cellData && <div><Link href={`/client/${linkId}`}>{cellData}</Link></div>;
+    };
+
     renderCell = (column, rowData) => {
       if (column.name === 'edit') {
         return this.renderEdit(rowData);
+      }
+
+      if (column.name === "firstName") {
+        return this.renderName(column, rowData)
       }
 
       switch (column.meta.fieldType) {
