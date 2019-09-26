@@ -28,6 +28,17 @@ query OrdersTableContent($filter: OrderFilter, $orderBy: [OrderOrderBy], $after:
 
 const TABLE_COLUMNS = [
   {
+    name: 'id',
+    title: '#',
+    meta: {
+      isList: false,
+      fieldType: FIELD_TYPE.TEXT, 
+      fieldTypeAttributes: {
+        format: '',
+      },
+    },
+  },
+  {
     name: 'client',
     title: 'Client',
     meta: {
@@ -172,9 +183,20 @@ const OrdersTable = enhancer(
       }
     };
 
+    renderName = (column, rowData) => {
+      const dataPath = column.name.split('.');
+      const cellData = objectPath.get(rowData, dataPath) || '';
+      return cellData && <div><Link href={`/order/${cellData}`}>{cellData}</Link></div>;
+    };
+
+
     renderCell = (column, rowData) => {
       if (column.name === 'edit') {
         return this.renderEdit(rowData);
+      }
+
+      if (column.name === "id") {
+        return this.renderName(column, rowData)
       }
 
       switch (column.meta.fieldType) {
