@@ -94,8 +94,8 @@ const CLIENT_ORDERS_COLUMNS = [
 ];
 
 const CLIENT_PAGE_QUERY = gql`
-query {
-  client(id: "ck0z6b5cw026r01jp23gnf57n") {
+query ($id: ID) {
+  client(id: $id) {
     firstName
     lastName
     email
@@ -115,7 +115,12 @@ query {
 `;
 
 const enhancer = compose(
-  graphql(CLIENT_PAGE_QUERY, { name: 'client' })
+  graphql(CLIENT_PAGE_QUERY,
+    {
+      name: 'client',
+      options: (props) => ({ variables :{ id: props.computedMatch.params.id} }),
+    })
+
 );
 
 const renderItems = (column, rowData, handler) => {
