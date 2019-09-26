@@ -1,0 +1,9 @@
+{
+  "data": {
+    "id": "ck0z6b5cw026r01jp23gnf57n"
+  },
+  "headers": {
+    "x-header-1": "header value"
+  },
+  "body": "{\"id\":\"ck0z6b5cw026r01jp23gnf57n\"}"
+}
