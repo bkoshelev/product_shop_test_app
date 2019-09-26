@@ -5,6 +5,7 @@ import { ProtectedRoute } from './shared/components';
 import { MainPlate, ContentPlate, Nav } from './components';
 import { Auth } from './routes/auth';
 /** __APP_PAGES_IMPORTS__ */
+import { Clients } from './routes/clients';
 
 export const Root = () => (
   <Switch>
@@ -13,11 +14,13 @@ export const Root = () => (
       <MainPlate>
         <Nav.Plate color="BLUE">
           {/** __APP_ROUTE_LINKS__ */}
+          <Nav.Item to="/clients" label="Clients" />
         </Nav.Plate>
         <ContentPlate>
           <Switch>
             {/** __APP_ROUTES__ */}
-        </Switch>
+            <ProtectedRoute exact path="/clients" component={Clients} />
+          </Switch>
         </ContentPlate>
       </MainPlate>
     </ProtectedRoute>
