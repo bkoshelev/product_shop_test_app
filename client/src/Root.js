@@ -6,6 +6,7 @@ import { MainPlate, ContentPlate, Nav } from './components';
 import { Auth } from './routes/auth';
 /** __APP_PAGES_IMPORTS__ */
 import { Clients } from './routes/clients';
+import { Client} from './routes/client';
 
 export const Root = () => (
   <Switch>
@@ -20,6 +21,8 @@ export const Root = () => (
           <Switch>
             {/** __APP_ROUTES__ */}
             <ProtectedRoute exact path="/clients" component={Clients} />
+            <ProtectedRoute exact path="/client/:id" component={Client} />
+
           </Switch>
         </ContentPlate>
       </MainPlate>
