@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'react-emotion';
 import { Grid, Navigation } from '@8base/boost';
 
-const NavTag = styled(Navigation)(props => console.log(props) || ({
+const NavTag = styled(Navigation)(props => ({
   position: 'fixed',
   left: 0,
   zIndex: 1000,
