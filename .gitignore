@@ -64,3 +64,4 @@ typings/
 client/node_modules
 server/node_modules
 .history
+server/.build
