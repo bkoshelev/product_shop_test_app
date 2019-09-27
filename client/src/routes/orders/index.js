@@ -7,6 +7,8 @@ import { OrderCreateDialog } from './OrderCreateDialog';
 import { OrderEditDialog } from './OrderEditDialog';
 import { OrderDeleteDialog } from './OrderDeleteDialog';
 import { OrdersTable } from './OrdersTable';
+import OrderCreateModal from './OrderCreateModal';
+import { BasketContextProvider } from './BasketContext';
 
 const getTotalCostOfOrders = gql`
 query {
@@ -21,8 +23,11 @@ const Orders = () => (
     <Card.Header>
       <Heading type="h4" text=" Orders" />  
     </Card.Header>
-
+    <BasketContextProvider>
+    
+    <OrderCreateModal></OrderCreateModal>
     <OrderCreateDialog />
+    </BasketContextProvider>
     <OrderEditDialog />
     <OrderDeleteDialog />
     <Card.Body padding="none" stretch scrollable>

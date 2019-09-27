@@ -221,7 +221,7 @@ const OrdersTable = enhancer(
     openCreateModal = () => {
       const { openModal } = this.props;
 
-      openModal('ORDER_CREATE_DIALOG_ID');
+      openModal('ORDER_CREATE_MODAL_ID');
     };
 
     render() {
