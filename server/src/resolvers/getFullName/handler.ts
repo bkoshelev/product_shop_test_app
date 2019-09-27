@@ -24,7 +24,6 @@ type ResolverResult = {
 };
 
 export default async (event: any, ctx: any) : Promise<ResolverResult> => {
-  console.log(event);
  const response = await ctx.api.gqlRequest(GET_USER_NAME_PARTS_QUERY, { id: event.data.id });
  const { client: { firstName, lastName}} = response;
 

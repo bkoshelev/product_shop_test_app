@@ -179,7 +179,6 @@ const renderCell = (column, rowData) => {
 };
 
 const Client = enhancer((props) => {
-  console.log(props);
   const { client = { firstName: '', lastName: '' } } = props.client;
   const { firstName, lastName, orders = {
     items: [{

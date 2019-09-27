@@ -37,7 +37,6 @@ export default async (event: any, ctx: any): Promise<ResolverResult> => {
   const getOrdersCost = (acc, order) => {
     if (order.orderItems && order.orderItems.items) {
       const orderCost = order.orderItems.items.reduce(getOrderCost, 0);
-      console.log({ orderCost})
       return sumTwoNum(acc, orderCost);
     } else {
       return acc;
@@ -45,8 +44,6 @@ export default async (event: any, ctx: any): Promise<ResolverResult> => {
   }
 
   const totalCost = await ordersList.items.reduce(getOrdersCost, 0);
-
-  console.log(totalCost);
 
   return {
     data: {

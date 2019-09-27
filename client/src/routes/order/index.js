@@ -189,7 +189,6 @@ const renderSwitch = (column, rowData) => {
 const renderRelation = (column, rowData) => {
 
   if (column.name === 'client.fullName') {
-    console.log(column.name, rowData, objectPath.get(rowData, ['client', 'firstName']))
     const firstName = objectPath.get(rowData, ['client', 'firstName']) || '';
     const lastName = objectPath.get(rowData, ['client', 'lastName']) || '';
 
@@ -253,7 +252,6 @@ const Order = enhancer((props) => {
     }]
   } } = order;
 
-  console.log({ orderItems})
 
   return (
     <>
