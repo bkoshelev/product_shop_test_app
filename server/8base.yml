@@ -1,21 +1,16 @@
 functions:
-  resolver:
+  getClientFullName:
     type: resolver
     handler:
-      code: src/resolvers/resolver/handler.ts
-    schema: src/resolvers/resolver/schema.graphql
-  task:
-    type: task
+      code: src/resolvers/getFullName/handler.ts
+    schema: src/resolvers/getFullName/schema.graphql
+  getTotalCostOfOrders:
+    type: resolver
     handler:
-      code: src/tasks/task/handler.ts
-  webhook:
-    type: webhook
+      code: src/resolvers/getTotalCostOfOrders/handler.ts
+    schema: src/resolvers/getTotalCostOfOrders/schema.graphql
+  createOrderItems:
+    type: trigger.after
     handler:
-      code: src/webhooks/webhook/handler.ts
-    path: /webhook
-    method: POST
-  trigger:
-    type: trigger.before
-    handler:
-      code: src/triggers/trigger/handler.ts
-    operation: Users.create
+      code: src/triggers/createOrderItems/handler.ts
+    operation: Order.create
